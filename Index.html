@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <!-- <script src="script.js" defer></script> -->
+    <title id="">Расчет ЗП </title>
+</head>
+<body>
+    <div class="container">
+        <h2>Расчёт заработной платы</h2>
+        <div class="form">
+            <label>Тарифная ставка, р/ч:</label>
+            <input type="number" id="ts" value="255.66">
+            <label>Общ. кол-во часов, ч:</label>
+            <input type="number" id="ocht" placeholder="Тек." value="">
+            <input type="number" id="ochp" placeholder="Пред." value=""><br>
+            <label>из них ночные, ч:</label>
+            <input type="number" id="ncht" placeholder="Тек." value="">
+            <input type="number" id="nchp" placeholder="Пред." value=""><br>
+            <label>Выслуга лет, %:</label>
+            <input type="number" id="vl" value="30"><br>
+            <label>Премия, %:</label>
+            <input type="number" id="prem" value="45"><br>
+            <label>Праздничные, ч:</label>
+            <input type="number" id="prz"><br>
+            <label>ПК ~ (т.с*2,25), ч:</label>
+            <input type="number" id="pk"><br>
+            <label>Подоходный налог, %:</label>
+            <input type="number" id="nal" value="13"><br>
+            <label>Проф. отчисления, %:</label>
+            <input type="number" id="prof" value="1"><br>
+        </div>
+        <div class="container2">
+            <div class="form2">
+                <div class="dop">
+                    <p>Тарифная ставка/оклад</p><div id="okl">--</div>
+                </div>
+                <div class="dop">
+                    <p>Доплата за передачу смены</p><div id="psmen">--</div>
+                </div>
+                <div class="dop">
+                    <p>Выслуга</p><div id="vlet">--</div>
+                </div>
+                <div class="dop">
+                    <p>Доплата за ночную смену</p><div id="noch">--</div>
+                </div>
+                <div class="dop">
+                    <p>Оплата ПовышКвалПереподг</p><div id="pkv">--</div>
+                </div>
+                <div class="dop">
+                    <p>Праздничные</p><div id="prazd">--</div>
+                </div>
+                <div class="dop">
+                    <p>ПремияТекМес Суммой</p><div id="premia">--</div>
+                </div>
+                <div class="dop gl">
+                <p><span>Всего начислено</span></p><div id="result">--</div>
+                </div>
+                <div class="dop">
+                    <p>Удержание:</p>
+                </div>
+                <div class="dop">
+                    <p>НДФЛ 13%</p><div id="pdx">--</div>
+                </div>
+                <div class="dop">
+                    <p>Профсоюз и др. %</p><div id="dopsb">--</div>
+                </div>
+                <div class="dop gl">
+                    <p><span>К выдачи</span></p><div id="result2">--</div>
+                </div>
+            </div>
+        </div>
+            <button onclick="func()">Расчитать</button>
+            
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
