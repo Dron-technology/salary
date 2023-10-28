@@ -1,20 +1,4 @@
-document.addEventListener('click', function (event) {
-
-    // игнорирование событий, которые произошли не на данной кнопке
-    if (!event.target.hasAttribute('full')) return;
-    
-    // если элемент уже в полноэкранном режиме, выйти из него
-    // В противном случае войти в полный экран
-    if (document.fullscreenElement) {
-     document.exitFullscreen();
-     
-    } else {
-     document.documentElement.requestFullscreen();
-    }
-    
-    }, false);
-    
-function func(){
+    function func(){
 
                     var ts = Number(document.getElementById("ts").value);
                     var ocht = Number(document.getElementById("ocht").value);
