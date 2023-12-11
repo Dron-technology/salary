@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#040637">
+    <link rel="stylesheet" href="css.css">
+    <link rel="icon" href="favicon.ico">
+    <script src="script.js" defer></script>
+    <title id="">Расчёт ЗП </title>
+</head>
+<body>
+    <div class="container-Mob">
+        <header class="header">
+            <input type="checkbox" id="check">
+            <label class="labelOff" for="check"><img class="Info-next" src="img/info.png"></label>
+            <label class="labelOn" for="check"><img class="Info-next" src="img/next.png"></label>
+        </header>
+        <div class="container">
+            <h2>Расчёт заработной платы</h2>
+            <div class="container-In">
+                <div class="div-in">Тарифная ставка, р/ч:<input id="ts" type="number" name="product" list="tsa" tabindex="1"></div>
+                <datalist id="tsa">
+                <option value="255.66"></option>
+                <option value="239.23"></option>
+                <option value="208.22"></option>
+                </datalist>
+                <div class="div-in">Общ. кол-во часов, ч:<input type="number" id="ocht" placeholder="Тек." tabindex="2"><input type="number" id="ochp" placeholder="Пред." value="" tabindex="4"></div>
+                <div class="div-in">из них ночные, ч:<input type="number" id="ncht" placeholder="Тек." tabindex="3"><input type="number" id="nchp" placeholder="Пред." value="" tabindex="5"></div>
+                <div class="div-in">Премия, %:<input type="number" id="prem" placeholder="Норм"><input type="number" id="premMin" placeholder="Лишен." value=""></div>
+                <div class="div-in">Выслуга лет, %:<input type="number" id="vl"></div>
+                <div class="div-in">Праздничные, ч:<input type="number" id="prz"></div>
+                <div class="div-in">ПК, ч:<input type="number" id="pk"></div>
+                <div class="div-in">Профсоюз и др, %:<input type="number" id="prof"></div>
+                <div class="div-in">с 1-15 число (кр. ПК), ч:<input type="number" id="ava" placeholder="Необяз."></div>
+            </div>
+            <div class="container-Out">
+                <div class="form2">
+                    <div class="dop">
+                        <div class="accruals-deductions-С1"></div>
+                        <p class="accruals-deductions">Начисления</p>
+                        <div class="accruals-deductions-С2"></div>
+                    </div>
+                    <div class="dop">Тарифная ставка/оклад<div id="okl">-</div></div>
+                    <div class="dop">Доплата за передачу смены<div id="psmen">-</div></div>
+                    <div class="dop">Выслуга<div id="vlet">-</div></div>
+                    <div class="dop">Доплата за ночную смену<div id="noch">-</div></div>
+                    <div class="dop hidden1">Оплата ПовышКвалПереподг<div id="pkv">-</div></div>
+                    <div class="dop hidden2">Праздничные<div id="prazd">-</div></div>
+                    <div class="dop">ПремияТекМес Суммой<div id="premia">-</div></div>
+                    <div class="dop gl">Всего начислено<div id="result">-</div></div>
+                    <div class="dop">
+                        <div class="accruals-deductions-С1"></div>
+                        <p class="accruals-deductions">Удержания</p>
+                        <div class="accruals-deductions-С2"></div>
+                    </div>
+                    <div class="dop">НДФЛ 13%<div id="pdx">-</div></div>
+                    <div class="dop hidden3">Профсоюз и др. %<div id="dopsb">-</div></div>
+                    <div class="dop hidden4">З/плЗаПервуюПоловинуМесяц<div id="avans">-</div></div>
+                    <div class="dop gl hidden5">К выдаче (без аванса)<div id="result3">-</div></div>
+                    <div class="dop gl">К выдаче<div id="result2">-</div></div>
+                </div>
+            </div>
+                <!-- <button onclick="func()">Расcчитать</button>     -->
+        </div>
+        <div class="container4">
+            <h3>Алгоритм расчета:</h3>
+            <p class="alg">Оклад:</p>
+                <p class="frml">ОК = ТС * ОЧ</p>
+                <p class="alg2"> где <b>ТС</b> – тарифная ставка р/ч, <br><b>ОЧ</b> – общее количество отработанных часов.</p>
+            <p class="alg">Передача смены:</p>
+                <p class="frml">ПрС = ОК / 100 * 2</p>
+                <p class="alg2">где <b>2</b> – % доплаты за передачу смены.</p>
+            <p class="alg">Выслуга лет:</p>
+                <p class="frml">ВЛ = ОК / 100 * Пв</p>
+                <p class="alg2">где <b>Пв</b> – % доплаты за выслугу лет.</p>
+            <p class="alg">Доплата за ночную смену:</p>
+                <p class="frml">Доп.Н = ТС * ЧН / 100 * 40</p>
+                <p class="alg2">где <b>ЧН</b> – кол-во часов, отработанных в ночное время.<br> <b>40</b> – % доплаты за ночную смену.</p>
+            <p class="alg">Повышение квалификации:</p>
+                <p class="frml">ПК = ТС * ЧПК * 2.25</p>
+                <p class="alg2"> где <b>ЧПК</b> - кол-во часов, отработанных в день ПК; <br> <b>2.25</b> ~ расчетный коэфф (при отсутствии данных среднего заработка).</p>
+            <p class="alg">Праздничные:</p>
+                <p class="frml">ПРЗД = ТС * ЧПР </p>
+                <p class="alg2"> где <b>ЧПР</b> - кол-во часов, отработанных в праздничные дни.</p>
+            <p class="alg">Премия (из расчета часов, отработанных в предыдущем месяце):</p>
+                <p class="frml">ПРЕМ = (ОК + Доп.Н) / 100 * Пн * (100 - Пл) / 100</p>
+                <p class="alg2">где <b>Пн</b> – % премиальный (норм).<br> <b>Пл</b> – % лишения премии.</p>
+            <p class="alg">Аванс:</p>
+                <p class="frml">АВС = Ч(1-15) * ТС *  0.87</p>
+                <p class="alg2">где <b>0.87</b> – коэфф равный вычету 13% НДФЛ</p>
+            <p class="alg">Всего начислено:</p>
+                <p class="frml">НЧЛ = ОК + ПрС + ВЛ + Доп.Н + ПК + ПРЗД + ПРЕМ</p>
+            <p class="alg">K выдаче:</p>
+                <p class="frml">ВДЧ = НЧЛ - НЧЛ / 100 * (13 % НДФЛ + % Профсоюз и др.)</p>
+        </div>
+    </div>
+</body>
+</html>
