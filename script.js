@@ -1,8 +1,10 @@
 // Загрузка данных из localStorage
 
+
 document.getElementById("ts").value = localStorage.getItem('ts')
 document.getElementById("prem").value = localStorage.getItem('prem')
 document.getElementById("vl").value = localStorage.getItem('vl')
+document.getElementById("dp").value = localStorage.getItem('dp')
 document.getElementById("prof").value = localStorage.getItem('prof')
 
 function func(){
@@ -13,6 +15,7 @@ function func(){
     let nchp = Number(document.getElementById("nchp").value);
     let prem = Number(document.getElementById("prem").value);
     let vl = Number(document.getElementById("vl").value);
+    let dp = Number(document.getElementById("dp").value);
     let premMin = Number(document.getElementById("premMin").value);
     let prz = Number(document.getElementById("prz").value);
     let pk = Number(document.getElementById("pk").value);
@@ -22,11 +25,12 @@ function func(){
     let okl = ts*ocht;
     let psmen = okl*0.02;
     let vlet = okl/100*vl;
+    let dpVU = okl/100*dp;
     let noch = ts*ncht*0.4;
     let pkv = ts*pk*2.25;
     let prazd = ts*prz;
-    let premia = ((ts*ochp)+(ts*nchp*0.4))/100*prem*(100-premMin)/100;
-    let result = okl+psmen+vlet+noch+pkv+prazd+premia;
+    let premia = ((ts*ochp)+(ts*nchp*0.4)+(ts*ochp/100*dp))/100*prem*(100-premMin)/100;
+    let result = okl+psmen+vlet+noch+pkv+prazd+premia+dpVU;
     let pdx = result/100*13;
     let dopsb = result/100*prof;
     let result2 = result-pdx-dopsb;
@@ -39,6 +43,7 @@ function func(){
     document.getElementById("psmen").innerHTML = out.format(psmen);
     document.getElementById("vlet").innerHTML = out.format(vlet);
     document.getElementById("noch").innerHTML = out.format(noch);
+    document.getElementById("dpVU").innerHTML = out.format(dpVU);
     document.getElementById("pkv").innerHTML = out.format(pkv);
     document.getElementById("prazd").innerHTML = out.format(prazd);
     document.getElementById("premia").innerHTML = out.format(premia);
@@ -54,6 +59,7 @@ function func(){
     let hidden3 = document.querySelector(".hidden3")
     let hidden4 = document.querySelector(".hidden4")
     let hidden5 = document.querySelector(".hidden5")
+    let hidden6 = document.querySelector(".hidden6")
 
     if (pk!=0){
         hidden1.style.cssText = 'display: flex;'
@@ -73,6 +79,7 @@ function func(){
         else{
             hidden3.style.cssText = 'display: none;'
         }
+
     if (ava!=0){
         hidden4.style.cssText = 'display: flex;'
         hidden5.style.cssText = 'display: flex;'
@@ -80,7 +87,13 @@ function func(){
         else{
             hidden4.style.cssText = 'display: none;'
             hidden5.style.cssText = 'display: none;'
-        }         
+        }   
+    if (dpVU!=0){
+        hidden6.style.cssText = 'display: flex;'
+    }
+        else{
+                hidden6.style.cssText = 'display: none;'
+        }      
 }
 
 document.querySelector('#check').addEventListener('click', () =>{
@@ -122,6 +135,9 @@ In.addEventListener('click', (e) =>{
     if (e.target.id == 'vl'){
         localStorage.setItem('vl', '');
         }
+    if (e.target.id == 'dp'){
+        localStorage.setItem('dp', '');
+        }
     if (e.target.id == 'prof'){
         localStorage.setItem('prof', '');
         }
@@ -145,6 +161,9 @@ In.addEventListener('input', (e) =>{
         }
     if (e.target.id == 'vl'){
         localStorage.setItem('vl', e.target.value);
+        }
+    if (e.target.id == 'dp'){
+            localStorage.setItem('dp', e.target.value);
         }
     if (e.target.id == 'prof'){
         localStorage.setItem('prof', e.target.value);

@@ -29,6 +29,7 @@
                 <div class="div-in">из них ночные, ч:<input type="number" id="ncht" placeholder="Тек." tabindex="3"><input type="number" id="nchp" placeholder="Пред." value="" tabindex="5"></div>
                 <div class="div-in">Премия, %:<input type="number" id="prem" placeholder="Норм"><input type="number" id="premMin" placeholder="Лишен." value=""></div>
                 <div class="div-in">Выслуга лет, %:<input type="number" id="vl"></div>
+                <div class="div-in">Доплата совм и ВУ, %:<input type="number" id="dp"></div>
                 <div class="div-in">Праздничные, ч:<input type="number" id="prz"></div>
                 <div class="div-in">ПК, ч:<input type="number" id="pk"></div>
                 <div class="div-in">Профсоюз и др, %:<input type="number" id="prof"></div>
@@ -45,6 +46,7 @@
                     <div class="dop">Доплата за передачу смены<div id="psmen">-</div></div>
                     <div class="dop">Выслуга<div id="vlet">-</div></div>
                     <div class="dop">Доплата за ночную смену<div id="noch">-</div></div>
+                    <div class="dop hidden6">Доплата совм, ВУ<div id="dpVU">-</div></div>
                     <div class="dop hidden1">Оплата ПовышКвалПереподг<div id="pkv">-</div></div>
                     <div class="dop hidden2">Праздничные<div id="prazd">-</div></div>
                     <div class="dop">ПремияТекМес Суммой<div id="premia">-</div></div>
@@ -84,13 +86,13 @@
                 <p class="frml">ПРЗД = ТС * ЧПР </p>
                 <p class="alg2"> где <b>ЧПР</b> - кол-во часов, отработанных в праздничные дни.</p>
             <p class="alg">Премия (из расчета часов, отработанных в предыдущем месяце):</p>
-                <p class="frml">ПРЕМ = (ОК + Доп.Н) / 100 * Пн * (100 - Пл) / 100</p>
+                <p class="frml">ПРЕМ = (ОК + Доп.Н + Доп.совм) / 100 * Пн * (100 - Пл) / 100</p>
                 <p class="alg2">где <b>Пн</b> – % премиальный (норм).<br> <b>Пл</b> – % лишения премии.</p>
             <p class="alg">Аванс:</p>
                 <p class="frml">АВС = Ч(1-15) * ТС *  0.87</p>
                 <p class="alg2">где <b>0.87</b> – коэфф равный вычету 13% НДФЛ</p>
             <p class="alg">Всего начислено:</p>
-                <p class="frml">НЧЛ = ОК + ПрС + ВЛ + Доп.Н + ПК + ПРЗД + ПРЕМ</p>
+                <p class="frml">НЧЛ = ОК + ПрС + ВЛ + Доп.Н + Доп.совм + ПК + ПРЗД + ПРЕМ</p>
             <p class="alg">K выдаче:</p>
                 <p class="frml">ВДЧ = НЧЛ - НЧЛ / 100 * (13 % НДФЛ + % Профсоюз и др.)</p>
         </div>
